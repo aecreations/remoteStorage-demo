@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="sidebar.css">
+  </head>
+
+  <body>
+    <main id="sidebar-content">
+      <div id="toolbar">
+        <button id="add-link" disabled="true">+ add link</button>
+        <span id="msg-banner"></span>
+      </div>
+      <div id="welcome">
+        <p>welcome</p>
+        <button id="setup">setup remote storage</button>
+      </div>
+      <div id="loading">
+        <p id="loading-msg">please wait</p>
+        <p id="progress-bar"></p>
+      </div>
+
+      <div id="reading-list"></div>
+    </main>
+
+    <script src="../lib/remotestorage.js"></script>
+    <script src="../lib/md5.js"></script>
+    <script src="../lib/jquery.js"></script>
+    <script src="../lib/contextMenu/jquery.contextMenu.min.js"></script>
+    <script src="../lib/contextMenu/jquery.ui.position.min.js"></script>
+    <script src="../scripts/aeConst.js"></script>
+    <script src="../scripts/aePrefs.js"></script>
+    <script src="../scripts/aeOAuth.js"></script>
+    <script src="../scripts/aeBookmarks.js"></script>
+    <script src="sidebar.js"></script>
+  </body>
+</html>

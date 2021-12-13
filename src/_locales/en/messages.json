@@ -1,0 +1,9 @@
+{
+  "extName": {
+    "message": "remoteStorage Demo"
+  },
+
+  "extDesc": {
+    "message": "A demo of the remoteStorage.js library."
+  }
+}

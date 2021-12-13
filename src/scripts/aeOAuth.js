@@ -111,9 +111,9 @@ let aeOAuth = function () {
       }
 
       let requestParams = new URLSearchParams({
-        "stgsvc": _authzSrvKey,
-        "code": _authzCode,
-        "redirect_uri": _redirectURL,
+        stgsvc: _authzSrvKey,
+        code: _authzCode,
+        redirect_uri: _redirectURL,
       });
       let requestOpts = {
         method: "POST",

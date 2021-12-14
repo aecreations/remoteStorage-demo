@@ -86,33 +86,29 @@ $("#toggle-sync").on("click", async (aEvent) => {
     }
 
     // Initialize Dropbox backend
+    $(document.body).css({cursor: "progress"});
     $("#toggle-sync").attr("disabled", "true");
 
     aeOAuth.init(backend);
-    let authzCode;
+    let authzCode, accessToken;
     try {
       authzCode = await aeOAuth.getAuthorizationCode();
-    }
-    catch (e) {
-      window.alert(e);
-      $("#toggle-sync").removeAttr("disabled");
-      return;
-    }
+      log("remoteStorage Demo::options.js: Authorization code: " + authzCode);
 
-    log("remoteStorage Demo::options.js: Authorization code: " + authzCode);
-
-    let accessToken;
-    try {
       accessToken = await aeOAuth.getAccessToken();
+      log("remoteStorage Demo::options.js: Received access token from authorization server: " + accessToken);
     }
     catch (e) {
       window.alert(e);
-      $("#toggle-sync").removeAttr("disabled");
-      return;
+    }
+    finally {
+      $(document.body).css({cursor: "unset"});
+      $("#toggle-sync").removeAttr("disabled");     
     }
 
-    log("remoteStorage Demo::options.js: Received access token from authorization server: " + accessToken);
-    $("#toggle-sync").removeAttr("disabled");
+    if (! accessToken) {
+      return;
+    }
 
     syncPrefs = {
       syncEnabled: true,

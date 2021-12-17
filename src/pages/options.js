@@ -34,6 +34,22 @@ function setSyncStatus(aIsSyncEnabled)
 }
 
 
+function setInitSyncProgressIndicator(aInProgress)
+{
+  if (aInProgress) {
+    $(document.body).css({cursor: "progress"});
+    $("#toggle-sync").attr("disabled", "true");
+    $("#init-sync-spinner").css({display: "inline-block"});
+  }
+  else {
+    $(document.body).css({cursor: "unset"});
+    $("#toggle-sync").removeAttr("disabled");     
+    $("#init-sync-spinner").hide();
+  }
+}
+
+
+
 //
 // Event handlers
 //
@@ -90,9 +106,7 @@ $("#toggle-sync").on("click", async (aEvent) => {
     }
 
     // Initialize Dropbox backend
-    $(document.body).css({cursor: "progress"});
-    $("#toggle-sync").attr("disabled", "true");
-
+    setInitSyncProgressIndicator(true);
     aeOAuth.init(backend);
     let authzCode, accessToken;
     try {
@@ -106,8 +120,7 @@ $("#toggle-sync").on("click", async (aEvent) => {
       window.alert(e);
     }
     finally {
-      $(document.body).css({cursor: "unset"});
-      $("#toggle-sync").removeAttr("disabled");     
+      setInitSyncProgressIndicator(false);
     }
 
     if (! accessToken) {

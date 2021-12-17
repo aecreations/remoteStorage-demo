@@ -4,9 +4,8 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-const RS_LOGGING = false;
-
 let gRemoteStorage;
+
 
 // Context menu commands
 let gCmd = {
@@ -90,7 +89,7 @@ async function initRemoteStorage()
   log("remoteStorage Demo: initRemoteStorage(): Initializing remoteStorage instance");
   gRemoteStorage = new RemoteStorage({
     modules: [ aeBookmarks ],
-    logging: RS_LOGGING
+    logging: prefs.verboseLogging
   });
 
   if (prefs.syncEnabled) {

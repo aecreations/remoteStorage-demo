@@ -13,6 +13,7 @@ let aePrefs = {
     initRSBackend: false,
     rsUserAddress: "",
     deleteReadLinks: false,
+    verboseLogging: false,
   },
 
   
